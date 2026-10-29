@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../jquery-4.0.0.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        $(document).ready(function() {
+            $("#showName").click(function() {
+                $.load("name.txt", function(data) {
+                    alert(data);
+                });
+            });
+        });
+    </script>
+
+    <button id="showName">Show your name</button>
+</body>
+</html>
