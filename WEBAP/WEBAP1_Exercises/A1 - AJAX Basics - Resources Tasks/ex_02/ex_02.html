@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 2</title>
+    <script src="../jquery-4.0.0.min.js"></script>
+</head>
+<body>
+    <script>
+        $(document).ready(function() {
+            $("#showContent").click(function() {
+                let fileName = $("#nameInput").val();
+                console.log(fileName);
+                $("#fileResult").load(fileName + ".txt");
+            });
+        });
+    </script>
+
+    <input type="text" id="nameInput" placeholder="Enter the file name">
+    <button id="showContent">Show the content</button>
+    <div id="fileResult"></div>
+</body>
+</html>
