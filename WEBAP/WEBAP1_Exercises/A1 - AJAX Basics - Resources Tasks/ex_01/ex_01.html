@@ -9,9 +9,7 @@
     <script>
         $(document).ready(function() {
             $("#showName").click(function() {
-                $.load("name.txt", function(data) {
-                    $("#nameDisplay").text(data);
-                });
+                $("#nameDisplay").load("name.txt");
             });
         });
     </script>
