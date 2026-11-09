@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 3</title>
+    <script src="../jquery-4.0.0.min.js"></script>
+</head>
+<body>
+    <script>
+        $(document).ready(function(){
+            $("a").click(function(){
+                let linkID = $(this)[0].id;
+                let linkResult = "";
+
+                if (linkID == "welcomeLink") {
+                    linkResult = "welcome";
+                } else if (linkID == "newsLink") {
+                    linkResult = "news";
+                } else if (linkID == "aboutLink") {
+                    linkResult = "about";
+                }
+
+                $("#linkResult").load(linkResult + ".txt");
+            });
+        })
+    </script>
+
+    <p>
+        <a id="welcomeLink">Welcome</a>
+        <a id="newsLink">News</a>
+        <a id="aboutLink">About</a>
+    </p>
+    
+
+    <div id="linkResult"></div>
+</body>
+</html>

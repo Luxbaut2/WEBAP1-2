@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="../jquery-4.0.0.min.js"></script>
+    <title>Exercise 4</title>
+</head>
+
+<body>
+    <script>
+        $(document).ready(function () {
+            $("#generateList").click(function () {
+                $.get("cars.txt", function (brand) {
+                    let carCollection = brand.split(";");
+                    $.each(carCollection, function (index, car) {
+                        $("#carOptions").append("<option id='" + car + "'>" + car + "</option>")
+                    });
+                });
+            });
+        });
+    </script>
+
+    <select id="carOptions">
+        <option disabled value="">Pick a car brand</option>
+    </select>
+    <button id="generateList">Generate car list</button>
+
+</body>
+
+</html>
