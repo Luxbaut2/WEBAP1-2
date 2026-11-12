@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <script src="../jquery-4.0.0.min.js"></script>
-    <title>Document</title>
+    <title>Exercise 1</title>
 </head>
 <body>
     <script>
         $(document).ready(function() {
             $("#showName").click(function() {
-                $.load("name.txt", function(data) {
-                    alert(data);
+                $.get("name.txt", function(data) {
+                    $("#nameDisplay").text(data);
                 });
             });
         });
     </script>
 
     <button id="showName">Show your name</button>
+    <div id="nameDisplay"></div>
 </body>
 </html>
