@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../jquery-4.0.0.min.js"></script>
+    <title>Exercise 2</title>
+</head>
+<body>
+    <script>
+        $(document).ready(function() {
+            $("#showFile").click(function() {
+                let fileName = $("#fileName").val();
+                $.get(fileName, function(data) {
+                    $("#fileContent").text(data);
+                });
+            });
+        });
+    </script>
+
+    <input "type="text" id="fileName" placeholder "Enter file name">
+    <button id="showFile">Show file content</button>
+    <div id="fileContent"></div>
+</body>
+</html>
