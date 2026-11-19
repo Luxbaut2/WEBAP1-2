@@ -8,11 +8,27 @@
     <script>
         $(document).ready(function()
         {
-            // TODO: #greet: read #firstName and #lastName with val() and display a greeting in #output
+            $("#greet").click(function() {
+                // TODO: #greet: read #firstName and #lastName with val() and display a greeting in #output
+                let firstName = $("#firstName").val();
+                let lastName = $("#lastName").val();
 
-            // TODO: error message in #message (class error) if a field is empty
+                // TODO: error message in #message (class error) if a field is empty
+                if (firstName === "" || lastName === "") {
+                    $("#message").addClass("error");
+                    $("#message").text("Please fill in both fields!");
+                } else {
+                    $("#message").removeClass("error");
+                    $("#message").text("");
+                    $("#output").text("Hello " + firstName + " " + lastName);
+                }
 
-            // TODO: Enter in #lastName triggers the greeting
+                // TODO: Enter in #lastName triggers the greeting
+            });
+            
+            
+
+            
         });
     </script>
 </head>

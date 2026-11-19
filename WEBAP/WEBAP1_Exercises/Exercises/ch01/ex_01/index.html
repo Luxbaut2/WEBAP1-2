@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Exercise 1.1</title>
     <link rel="stylesheet" href="../../../assets/exercise.css">
     <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
     <script>
-        $(document).ready(function()
-        {
+        $(document).ready(function () {
+            $("button").click(function () {
+                let btnText = $(this).text();
+                if (btnText == "Reset") {
+                    $("#page *").css("background-color", "transparent");;
+                } else {
+                    eval(btnText).css("background-color", "yellow");
+                }
+            })
             // TODO: bind a click event to every button (b1 … b8)
 
             // TODO: highlight the selected elements with css("background-color", "yellow")
@@ -16,6 +24,7 @@
         });
     </script>
 </head>
+
 <body>
     <h2>Exercise 1.1 – Selectors</h2>
     <div id="buttons">
@@ -45,4 +54,5 @@
         </div>
     </div>
 </body>
+
 </html>
