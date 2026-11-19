@@ -1,13 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Exercise 1.5</title>
     <link rel="stylesheet" href="../../../assets/exercise.css">
     <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
     <script>
-        $(document).ready(function()
-        {
+        $(document).ready(function () {
+            $("#name").on("input", function () {
+                let name = $(this).val().trim();
+                if (name === "") {
+                    $("#summary").prop("disabled", true);
+                } else {
+                    $("#summary").prop("disabled", false);
+                }
+            });
+
+            $("#summary").click(function () {
+                let email = $("#email").val();
+                let schoolClass = $("#class").val();
+
+                if (email === "") {
+                    $("#output").append("<li class='error'>Please enter an email</li>");
+                } 
+                if (schoolClass === "") {
+                    $("#output").append("<li class='error'>Please select a class</li>");
+                } 
+                
+
+                if (email !== "" && schoolClass !== ""){
+                    $("#output").html("");
+                }
+
+
+            });
             // TODO: #summary: display all values in the list #output
 
             // TODO: enable/disable #summary depending on the name field (event input)
@@ -16,6 +43,7 @@
         });
     </script>
 </head>
+
 <body>
     <h2>Exercise 1.5 – Registration</h2>
     <form id="registration">
@@ -46,4 +74,5 @@
     </form>
     <ul id="output"></ul>
 </body>
+
 </html>
