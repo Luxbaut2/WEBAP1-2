@@ -18,20 +18,49 @@
             });
 
             $("#summary").click(function () {
+                let name = $("#name").val();
                 let email = $("#email").val();
                 let schoolClass = $("#class").val();
+                let languageChoice = $("input[name='language']:checked").val();
+                let remarks = $("#remarks").val();
+                let newsletter = "";
+                $("#output").html("");
 
-                if (email === "") {
-                    $("#output").append("<li class='error'>Please enter an email</li>");
-                } 
-                if (schoolClass === "") {
-                    $("#output").append("<li class='error'>Please select a class</li>");
-                } 
-                
+                if (!email) $("#output").append("<li class='error'>Please enter an email</li>");
+                if (!schoolClass) $("#output").append("<li class='error'>Please select a class</li>");
 
-                if (email !== "" && schoolClass !== ""){
-                    $("#output").html("");
+                if ($("#newsletter").is(":checked")) {
+                    newsletter = "✓"
+                } else {
+                    newsletter = "✖";
                 }
+                
+                if (email && schoolClass && languageChoice) {
+                    switch (languageChoice) {
+                        case "EN": $("#output").append("<li>Name: " + name + "</li>");
+                                   $("#output").append("<li>Email: " + email + "</li>");
+                                   $("#output").append("<li>Class: " + schoolClass + "</li>");
+                                   $("#output").append("<li>Preferred language: English</li>");
+                                   $("#output").append("<li>Receive newsletter: " + newsletter + "</li>");
+                                   if (remarks) $("#output").append("<li>Remarks: " + remarks + "</li>");  
+                        break;
+                        case "FR": $("#output").append("<li>Nom: " + name + "</li>");
+                                   $("#output").append("<li>Email: " + email + "</li>");
+                                   $("#output").append("<li>Classe: " + schoolClass + "</li>");
+                                   $("#output").append("<li>Langue préférée: Français</li>");
+                                   $("#output").append("<li>S'abonner aux actualités: " + newsletter + "</li>");
+                                   if (remarks) $("#output").append("<li>Remarks: " + remarks + "</li>");  
+                        break;
+                        case "DE": $("#output").append("<li>Name: " + name + "</li>");
+                                   $("#output").append("<li>Email: " + email + "</li>");
+                                   $("#output").append("<li>Klasse: " + schoolClass + "</li>");
+                                   $("#output").append("<li>Präferierte Sprache: Deutsch</li>");
+                                   $("#output").append("<li>Nachrichten Abonnement: " + newsletter + "</li>");
+                                   if (remarks) $("#output").append("<li>Bemerkung: " + remarks + "</li>");  
+                        break;
+                    }
+                }
+
 
 
             });
@@ -40,6 +69,17 @@
             // TODO: enable/disable #summary depending on the name field (event input)
 
             // TODO: #reset: clear all fields and the list
+
+            $("#reset").click(function() {
+                $("#name").val("");
+                $("#summary").prop("disabled", true);
+                $("#email").val("");
+                $('#class option[value=""]').prop('selected', true);
+                $("input:radio[value=EN]").prop("checked", true);
+                $('#newsletter').prop('checked', false);
+                $("#remarks").val("");;
+                $("#output").html("");
+            });
         });
     </script>
 </head>
@@ -52,7 +92,7 @@
         <p>
             <label>Class:
                 <select id="class">
-                    <option value="">– please select –</option>
+                    <option value="" disabled selected>– please select –</option>
                     <option value="1TPIF">1TPIF</option>
                     <option value="2TPIF">2TPIF</option>
                     <option value="3TPIF">3TPIF</option>

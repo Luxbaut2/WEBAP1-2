@@ -8,9 +8,9 @@
     <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
     <script>
         $(document).ready(function () {
+            //$("#calc").click(function(){
 
-
-            $("#calc").click(function () {
+            function calculateNumber() {
                 let number1 = $("#a").val();
                 let number2 = $("#b").val();
                 let operator = $("#op").val();
@@ -49,10 +49,19 @@
                     $("#result").addClass("error");
                     $("#result").text("Please fill out both fields!");
                 }
-            });
+                //});
+            };
+        
+            
             // TODO: #calc: read #a, #b and #op, convert the values to numbers and display the result in #result
 
             // TODO: error messages for invalid input and division by zero
+
+            $("#a, #b, #op").on("change", function() {
+                calculateNumber();
+            });
+            
+
         });
     </script>
 </head>
@@ -68,7 +77,7 @@
             <option value="/">÷</option>
         </select>
         <input type="number" id="b" placeholder="Number 2">
-        <button id="calc">=</button>
+        <!--<button id="calc">=</button>-->
         <span id="result" class="result"></span>
     </p>
 </body>

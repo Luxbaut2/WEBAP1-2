@@ -1,23 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Exercise 1.6</title>
     <link rel="stylesheet" href="../../../assets/exercise.css">
     <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
     <script>
-        $(document).ready(function()
-        {
-            // TODO: #add (and Enter in #task): append a new <li> to #list
+        $(document).ready(function () {
+            function updateCount() {
+                let count = $("#list li").not(".done").length;
+                $("#count").text(count);
+            }
 
-            // TODO: click on an <li>: toggle the class done (event delegation!)
+            // TODO: #add (and Enter in #task): append a new <li> to #list
+            $("#add").click(function () {
+                let task = $("#task").val();
+                $("#list").append("<li>" + task + "</li>");
+                updateCount();
+            });
+
+            // TODO: click on an <li>: toggle the class done (event delegation!) 
+            $("#list").on("click", "li", function () {
+                $(this).toggleClass("done");
+            });
 
             // TODO: #clearDone: remove all completed tasks
+            $("#clearDone").click(function() {
+                $("#list li.done").remove();
+                updateCount();
+            });
 
             // TODO: update #count
+            updateCount();
         });
     </script>
 </head>
+
 <body>
     <h2>Exercise 1.6 – To-do list</h2>
     <p>
@@ -28,4 +47,5 @@
     <p>Open tasks: <span id="count">0</span></p>
     <ul id="list"></ul>
 </body>
+
 </html>
