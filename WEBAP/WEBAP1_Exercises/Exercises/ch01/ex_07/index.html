@@ -19,6 +19,7 @@
                 $("body").toggleClass("dark");
             });
 
+            
             $("#colorBox").hover(
                 function () {
                     $(this).css("background", "orange");
@@ -29,20 +30,24 @@
 
             $("#plus").click(function () {
                 let counter = parseInt($("#counter").text());
-                $("#counter").html(counter+1);
+                $("#counter").html(counter + 1);
             });
 
             $("#size").change(function () {
                 $("#sample").css("fontSize", $(this).val());
             });
 
-            $("#show").click(function () {
-
+            $("#show").change(function () {
+                if ($(this).is(':checked')) {
+                    $("#secret").show();
+                } else {
+                    $("#secret").hide();
+                }
             });
-        }),
+        });
 
-            document.addEventListener("DOMContentLoaded", function () {
-                /*document.getElementById("setTitle").addEventListener("click", function()
+            /*document.addEventListener("DOMContentLoaded", function () {
+                document.getElementById("setTitle").addEventListener("click", function()
                 {
                     let text = document.getElementById("newTitle").value;
                     document.getElementById("title").textContent = text;
@@ -72,7 +77,7 @@
 
                 document.getElementById("size").addEventListener("change", function () {
                     document.getElementById("sample").style.fontSize = this.value;
-                });*/
+                });
 
                 document.getElementById("show").addEventListener("change", function () {
                     if (this.checked) {
@@ -82,7 +87,7 @@
                         document.getElementById("secret").style.display = "none";
                     }
                 });
-            });
+            });*/
     </script>
 </head>
 

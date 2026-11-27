@@ -8,6 +8,8 @@
     <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
     <script>
         $(document).ready(function () {
+            let task = "";
+
             function updateCount() {
                 let count = $("#list li").not(".done").length;
                 $("#count").text(count);
@@ -15,10 +17,25 @@
 
             // TODO: #add (and Enter in #task): append a new <li> to #list
             $("#add").click(function () {
-                let task = $("#task").val();
-                $("#list").append("<li>" + task + "</li>");
-                updateCount();
+                task = $("#task").val();
+                if (task !== "") {
+                    $("#list").append("<li>" + task + "</li>");
+                    $("#task").val("");
+                    updateCount();
+                }
             });
+
+            $("#task").on("keydown", function (event) {
+                if (event.key === "Enter") {
+                    task = $("#task").val();
+                    if (task !== "") {
+                        $("#list").append("<li>" + task + "</li>");
+                        $("#task").val("");
+                        updateCount();
+                    }
+                }
+            });
+
 
             // TODO: click on an <li>: toggle the class done (event delegation!) 
             $("#list").on("click", "li", function () {
@@ -26,7 +43,7 @@
             });
 
             // TODO: #clearDone: remove all completed tasks
-            $("#clearDone").click(function() {
+            $("#clearDone").click(function () {
                 $("#list li.done").remove();
                 updateCount();
             });

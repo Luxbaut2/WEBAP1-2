@@ -9,15 +9,36 @@
         .question { cursor: pointer; }
         .question.open { color: #c0392b; }
     </style>
-    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script src="../../library/jquery-4.0.0.min.js"></script>
     <script>
         $(document).ready(function()
         {
+            let bar = 0;
+
             // TODO: click on a .question: slideToggle() the answer, toggle the class open
+            $(".question").click(function(){
+                $(this).toggleClass("open");
+                $(this).next().slideToggle();
+            });
 
             // TODO: #showAll / #hideAll
+            $("#showAll").click(function() {
+                $(".answer").slideDown();
+            });
+            $("#hideAll").click(function() {
+                $(".answer").slideUp();
+            });
+            
 
             // TODO: animate the width of #bar
+            $(".question").click(function() {
+                 $('.answer:visible').length;
+                $("#bar").animate(bar, 0.25);
+                console.log(bar);
+                
+            });
+            
+            
         });
     </script>
 </head>
